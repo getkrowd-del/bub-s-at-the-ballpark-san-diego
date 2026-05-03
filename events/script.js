@@ -1,0 +1,7 @@
+var _bcOpen=false;function bcToggle(){document.getElementById('bc-bubble').style.display='none';_bcOpen=!_bcOpen;document.getElementById('bc-modal').style.display=_bcOpen?'block':'none';}function bcClose(){_bcOpen=false;document.getElementById('bc-modal').style.display='none';}setTimeout(function(){var b=document.getElementById('bc-bubble');if(b&&!_bcOpen)b.style.display='block';},3000);
+
+var EVENTS=[{title:"WEEKLY GAME NIGHT AT BUB'S",short_desc:"Weekly Game Nights when the Padres are out of Town. Play and join us for Trivia Night, Family Feud Game Night, and more throughout the week!",date_label:"Every Tuesday",time_start:"11:00 PM",time_end:"2:00 AM",recurring:true,photo:"https://krowdimg.b-cdn.net/1062_20250903121820.png"}];
+var g=document.getElementById('eventsGrid');
+EVENTS.forEach(function(ev){
+  g.innerHTML+='<div class="event-card"><div class="event-card-img"><img src="'+ev.photo+'" alt="'+ev.title+'" loading="lazy"><span class="event-badge">'+ev.date_label+'</span>'+(ev.recurring?'<span class="event-recurring">Recurring</span>':'')+'</div><div class="event-card-body"><h3>'+ev.title+'</h3><p>'+ev.short_desc+'</p><div class="event-meta"><div class="event-meta-item">🕐 '+ev.time_start+' – '+ev.time_end+'</div><div class="event-meta-item">📍 715 J St, San Diego</div></div></div></div>';
+});
