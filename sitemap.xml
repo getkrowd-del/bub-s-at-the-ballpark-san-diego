@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://bubs.getkrowd.com/happyhour/</loc>
-    <lastmod>2026-05-03T20:33:59.914Z</lastmod>
+    <loc>https://bubs.getkrowd.com/events/</loc>
+    <lastmod>2026-05-03T20:37:07.477Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://bubs.getkrowd.com/catering/</loc>
+    <lastmod>2026-05-03T20:35:48.369Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://bubs.getkrowd.com/drinks/</loc>
-    <lastmod>2026-05-03T20:33:09.669Z</lastmod>
+    <lastmod>2026-05-03T20:34:32.479Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://bubs.getkrowd.com/happyhour/</loc>
+    <lastmod>2026-05-03T20:34:06.486Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://bubs.getkrowd.com/parties/</loc>
     <lastmod>2026-05-03T20:27:28.633Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://bubs.getkrowd.com/catering/</loc>
-    <lastmod>2026-05-03T20:21:57.226Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
