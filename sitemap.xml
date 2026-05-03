@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://bubs.getkrowd.com/foodmenu/</loc>
+    <lastmod>2026-05-03T20:38:08.384Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://bubs.getkrowd.com/events/</loc>
-    <lastmod>2026-05-03T20:37:27.964Z</lastmod>
+    <lastmod>2026-05-03T20:37:34.439Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
