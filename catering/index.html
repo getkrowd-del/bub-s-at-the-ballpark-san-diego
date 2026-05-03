@@ -6,6 +6,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
 
 
 <!-- SEO Meta Tags -->
@@ -196,44 +197,60 @@
 </script>  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<nav>
+<!-- ============================================================================ -->
+<!-- NAVBAR SECTION: Primary desktop navigation with logo, social links, and CTA  -->
+<!-- Features: Sticky top bar, external links updated to bubs.getkrowd.com       -->
+<!-- Mobile Padding: Compact layout keeps logo and menu button inside viewport    -->
+<!-- ============================================================================ -->
+<nav data-section="navbar">
   <div class="nav-wrap">
     <ul class="nav-left">
-      <li><a href="https://paymegpt.com/p/kfEyuFB">Menu</a></li>
-      <li><a href="https://paymegpt.com/p/bgdVAj">Drinks</a></li>
-      <li><a href="https://paymegpt.com/p/ch6wVfUq">Events</a></li>
-      <li><a href="https://paymegpt.com/p/vnYtdPzuPa">Happy Hour</a></li>
+      <li><a href="https://bubs.getkrowd.com/foodmenu">Menu</a></li>
+      <li><a href="https://bubs.getkrowd.com/drinks/">Drinks</a></li>
+      <li><a href="https://bubs.getkrowd.com/events/">Events</a></li>
+      <li><a href="https://bubs.getkrowd.com/happyhour/">Happy Hour</a></li>
     </ul>
-    <div class="nav-logo"><a href="https://paymegpt.com/p/iNBxiygZ5"><img src="https://static.spotapps.co/website_images/ab_websites/15131_website_v1/logo.png" alt="Bub's"></a></div>
+    <div class="nav-logo"><a href="https://bubs.getkrowd.com/"><img src="https://static.spotapps.co/website_images/ab_websites/15131_website_v1/logo.png" alt="Bub's"></a></div>
     <div class="nav-social-wrap">
       <ul class="nav-right">
-        <li><a href="https://paymegpt.com/p/zQf4DpTq">Parties</a></li>
+        <li><a href="https://bubs.getkrowd.com/parties/">Parties</a></li>
         <li><a href="#" style="color:var(--gold)">Catering</a></li>
         <li class="nav-order"><a href="https://order.toasttab.com/online/bubs-at-the-ballpark-715-j-st">Order</a></li>
-        <li><a href="https://paymegpt.com/p/K98LLW">About</a></li>
+        <li><a href="https://bubs.getkrowd.com/about/">About</a></li>
       </ul>
       <div class="nav-social">
-        <a href="https://x.com/BubsBallpark" target="_blank"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.254 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-        <a href="https://www.facebook.com/BubsBallpark/" target="_blank"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-        <a href="https://www.instagram.com/bubsballpark" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-        <a href="https://www.google.com/search?q=Bub%27s+at+the+Ballpark+Reviews" target="_blank"><svg viewBox="0 0 24 24"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg></a>
+        <a href="https://x.com/BubsBallpark" target="_blank" aria-label="Bub's at the Ballpark on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.254 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="https://www.facebook.com/BubsBallpark/" target="_blank" aria-label="Bub's at the Ballpark on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="https://www.instagram.com/bubsballpark" target="_blank" aria-label="Bub's at the Ballpark on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="https://www.google.com/search?q=Bub%27s+at+the+Ballpark+Reviews" target="_blank" aria-label="Bub's at the Ballpark Google reviews"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg></a>
       </div>
-      <button class="mob-btn" onclick="var m=document.getElementById('mn');m.style.display=m.style.display==='block'?'none':'block'"><span></span><span></span><span></span></button>
+      <button class="mob-btn nav-menu-toggle" type="button" aria-label="Toggle mobile navigation" onclick="var m=document.getElementById('mn');m.style.display=m.style.display==='block'?'none':'block'"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
-<div class="mob-nav" id="mn">
-  <a href="https://paymegpt.com/p/kfEyuFB">Menu</a>
-  <a href="https://paymegpt.com/p/bgdVAj">Drinks</a>
-  <a href="https://paymegpt.com/p/ch6wVfUq">Events</a>
-  <a href="https://paymegpt.com/p/vnYtdPzuPa">Happy Hour</a>
-  <a href="https://paymegpt.com/p/zQf4DpTq">Parties</a>
+
+<!-- ============================================================================ -->
+<!-- MOBILE NAVIGATION SECTION: Collapsible menu for small screens                -->
+<!-- Features: Same destination links as desktop navigation                       -->
+<!-- Mobile Padding: Link rows have tap-friendly spacing                          -->
+<!-- ============================================================================ -->
+<div class="mob-nav" id="mn" data-section="mobile-navigation">
+  <a href="https://bubs.getkrowd.com/foodmenu">Menu</a>
+  <a href="https://bubs.getkrowd.com/drinks/">Drinks</a>
+  <a href="https://bubs.getkrowd.com/events/">Events</a>
+  <a href="https://bubs.getkrowd.com/happyhour/">Happy Hour</a>
+  <a href="https://bubs.getkrowd.com/parties/">Parties</a>
   <a href="#" style="color:var(--gold)">Catering</a>
   <a href="https://order.toasttab.com/online/bubs-at-the-ballpark-715-j-st">Order Now</a>
-  <a href="https://paymegpt.com/p/K98LLW">About</a>
+  <a href="https://bubs.getkrowd.com/about/">About</a>
 </div>
 
-<div class="hero">
+<!-- ============================================================================ -->
+<!-- HERO SECTION: Main landing area with headline, subtext, and primary CTA      -->
+<!-- Features: Background image, dark overlay, catering request anchor             -->
+<!-- Mobile Padding: 20px side padding prevents headline clipping on phones       -->
+<!-- ============================================================================ -->
+<div class="hero" data-section="hero">
   <div class="hero-bg"></div><div class="hero-ov"></div>
   <div class="hero-c">
     <span>Feed the Crowd</span>
@@ -243,14 +260,24 @@
   </div>
 </div>
 
-<div class="why-strip">
+<!-- ============================================================================ -->
+<!-- BENEFITS STRIP SECTION: Four quick reasons to choose Bub's catering          -->
+<!-- Features: Icon cards, gold brand background, responsive grid                 -->
+<!-- Mobile Padding: Each item includes comfortable text padding                  -->
+<!-- ============================================================================ -->
+<div class="why-strip" data-section="benefits">
   <div class="why-item"><div class="icon">⚾</div><h4>Game-Day Favorites</h4><p>Wings, burgers, tots & more — crowd-pleasing classics</p></div>
   <div class="why-item"><div class="icon">🍺</div><h4>Full Bar Service</h4><p>Cold beers, cocktails & non-alcoholic options available</p></div>
   <div class="why-item"><div class="icon">👨‍🍳</div><h4>Custom Menus</h4><p>We work with you to build the perfect spread</p></div>
   <div class="why-item"><div class="icon">📍</div><h4>On-Site or Pick-Up</h4><p>We come to you, or you pick up from us</p></div>
 </div>
 
-<div class="main-split" id="catering-form">
+<!-- ============================================================================ -->
+<!-- CATERING FORM SECTION: Service details and quote request form                -->
+<!-- Features: Two-column desktop split, lead capture form, webhook submission    -->
+<!-- Mobile Padding: Panels reduce to single column with 20px side padding        -->
+<!-- ============================================================================ -->
+<div class="main-split" id="catering-form" data-section="catering-request">
   <div class="info-panel">
     <h2>Catering Service</h2>
     <div class="sub">What We Offer</div>
@@ -268,64 +295,107 @@
   <div class="form-panel">
     <h3>Catering Request</h3>
     <p>Please fill out the form and we'll do our best to accommodate your desired date and any requests you may have to make your event memorable.</p>
-    <form id="catForm">
+    <form id="catForm" class="contact-form">
       <div class="fg-row">
-        <div class="fg"><label>Full Name <span class="r">*</span></label><input type="text" id="cName" placeholder="e.g. Nina Simone" required></div>
-        <div class="fg"><label>Phone <span class="r">*</span></label><input type="tel" id="cPhone" placeholder="e.g. (123) 456-7890" required></div>
+        <div class="fg"><label for="cName">Full Name <span class="r">*</span></label><input type="text" id="cName" placeholder="e.g. Nina Simone" required></div>
+        <div class="fg"><label for="cPhone">Phone <span class="r">*</span></label><input type="tel" id="cPhone" placeholder="e.g. (123) 456-7890" required></div>
       </div>
       <div class="sms-box">
         <div class="sms-check"><input type="checkbox" id="cSms"><label for="cSms">I agree to receive marketing text messages from Bub's at the Ballpark about specials, events, and other exclusive offers.</label></div>
         <div class="sms-fine"><a href="#">Privacy Policy</a> &nbsp;<a href="#">Terms and Conditions</a><ul><li>Message and data rates may apply.</li><li>Message frequency varies.</li><li>Reply STOP to cancel, HELP for help.</li></ul></div>
       </div>
-      <div class="fg"><label>Email <span class="r">*</span></label><input type="email" id="cEmail" placeholder="e.g. cris@example.com" required></div>
-      <div class="fg"><label>Company <span style="color:#999;font-weight:400;">(optional)</span></label><input type="text" id="cCompany" placeholder="Business name..."></div>
+      <div class="fg"><label for="cEmail">Email <span class="r">*</span></label><input type="email" id="cEmail" placeholder="e.g. cris@example.com" required></div>
+      <div class="fg"><label for="cCompany">Company <span style="color:#999;font-weight:400;">(optional)</span></label><input type="text" id="cCompany" placeholder="Business name..."></div>
       <div class="fg-row">
-        <div class="fg"><label>Number of People <span class="r">*</span></label><input type="number" id="cNum" placeholder="Number of guests" min="1" required></div>
-        <div class="fg"><label>Select Date <span class="r">*</span></label><input type="date" id="cDate" required></div>
+        <div class="fg"><label for="cNum">Number of People <span class="r">*</span></label><input type="number" id="cNum" placeholder="Number of guests" min="1" required></div>
+        <div class="fg"><label for="cDate">Select Date <span class="r">*</span></label><input type="date" id="cDate" required></div>
       </div>
       <div class="fg-row">
-        <div class="fg"><label>Select Time <span class="r">*</span></label><select id="cTime" required><option value="">Select time...</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>01:00 PM</option><option>02:00 PM</option><option>03:00 PM</option><option>04:00 PM</option><option>05:00 PM</option><option>06:00 PM</option><option>07:00 PM</option><option>08:00 PM</option><option>09:00 PM</option><option>10:00 PM</option></select></div>
-        <div class="fg"><label>Type of Service <span class="r">*</span></label><select id="cType" required><option value="">Select...</option><option>Pick-up</option><option>On-Site Delivery & Setup</option><option>Full-Service Catering</option><option>Drop-Off Only</option><option>Bar Service</option><option>Food & Bar Package</option></select></div>
+        <div class="fg"><label for="cTime">Select Time <span class="r">*</span></label><select id="cTime" required><option value="">Select time...</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>01:00 PM</option><option>02:00 PM</option><option>03:00 PM</option><option>04:00 PM</option><option>05:00 PM</option><option>06:00 PM</option><option>07:00 PM</option><option>08:00 PM</option><option>09:00 PM</option><option>10:00 PM</option></select></div>
+        <div class="fg"><label for="cType">Type of Service <span class="r">*</span></label><select id="cType" required><option value="">Select...</option><option>Pick-up</option><option>On-Site Delivery & Setup</option><option>Full-Service Catering</option><option>Drop-Off Only</option><option>Bar Service</option><option>Food & Bar Package</option></select></div>
       </div>
-      <div class="fg"><label>Budget per Person</label><input type="text" id="cBudget" value="$30"></div>
-      <div class="fg"><label>Description / Requests <span style="color:#999;font-weight:400;">(optional)</span></label><textarea id="cRequests" placeholder="Any special requests or details about your event?"></textarea></div>
-      <div class="fg"><label>How did you hear about us?</label><select id="cHear"><option value=""></option><option>Google</option><option>Facebook</option><option>Instagram</option><option>Friend / Word of Mouth</option><option>Walking By</option><option>Yelp</option><option>Other</option></select></div>
-      <button type="submit" class="btn-submit">Submit Catering Request</button>
+      <div class="fg"><label for="cBudget">Budget per Person</label><input type="text" id="cBudget" value="$30"></div>
+      <div class="fg"><label for="cRequests">Description / Requests <span style="color:#999;font-weight:400;">(optional)</span></label><textarea id="cRequests" placeholder="Any special requests or details about your event?"></textarea></div>
+      <div class="fg"><label for="cHear">How did you hear about us?</label><select id="cHear"><option value=""></option><option>Google</option><option>Facebook</option><option>Instagram</option><option>Friend / Word of Mouth</option><option>Walking By</option><option>Yelp</option><option>Other</option></select></div>
+      <button type="submit" class="btn-submit cta-primary">Submit Catering Request</button>
     </form>
     <div class="success" id="catSuccess"><h4>🎉 Request Received!</h4><p>Thank you! Our catering team will reach out within 24 hours.<br><br>Questions? Call <a href="tel:6195460815" style="color:#155724;font-weight:600;">(619)-546-0815</a></p></div>
   </div>
 </div>
 
-<div class="foot">
+<!-- ============================================================================ -->
+<!-- FOOTER SECTION: Location, hours, logo, and contact information               -->
+<!-- Features: Brand logo center, contact links, mobile stacked layout            -->
+<!-- Mobile Padding: Footer columns stack with 20px side padding                  -->
+<!-- ============================================================================ -->
+<div class="foot" data-section="footer">
   <div class="foot-l"><h5>Location</h5>715 J St, San Diego, CA 92101<br><h5 style="margin-top:12px;">Hours</h5>Mon–Thu: 11AM–11PM | Fri: 11AM–12AM<br>Sat: 10AM–12AM | Sun: 9:30AM–11PM</div>
   <div class="foot-logo"><img src="https://static.spotapps.co/website_images/ab_websites/15131_website_v1/footer_img.png" alt="Bub's"></div>
   <div class="foot-r"><h5>Contact Us</h5><a href="tel:6195460815">(619)-546-0815</a><br><a href="mailto:info@bubssandiego.com">info@bubssandiego.com</a></div>
 </div>
-<div class="foot-copy">© 2024 Bub's at the Ballpark. All rights reserved.</div>
 
-<div class="mob-bar"><div class="mob-bar-inner">
+<!-- ============================================================================ -->
+<!-- COPYRIGHT SECTION: Small legal footer bar                                    -->
+<!-- Features: Updated copyright year                                             -->
+<!-- Mobile Padding: Maintains 20px horizontal padding on smaller screens         -->
+<!-- ============================================================================ -->
+<div class="foot-copy" data-section="copyright">© 2026 Bub's at the Ballpark. All rights reserved.</div>
+
+<!-- ============================================================================ -->
+<!-- MOBILE CTA BAR SECTION: Fixed bottom quick actions for mobile users          -->
+<!-- Features: Order, parties, and catering shortcuts                             -->
+<!-- Mobile Padding: Tap-friendly button height                                   -->
+<!-- ============================================================================ -->
+<div class="mob-bar" data-section="mobile-cta-bar"><div class="mob-bar-inner">
   <a href="https://order.toasttab.com/online/bubs-at-the-ballpark-715-j-st">ORDER</a>
-  <a href="https://paymegpt.com/p/zQf4DpTq">PARTIES</a>
+  <a href="https://bubs.getkrowd.com/parties/">PARTIES</a>
   <a href="#">CATERING</a>
 </div></div>
 
-<div id="bc-bubble" style="position:fixed;bottom:135px;right:16px;z-index:9999;max-width:240px;background:#1a1008;color:#fff;border-radius:16px 16px 0 16px;padding:14px 32px 14px 14px;font-size:13px;line-height:1.6;box-shadow:0 4px 20px rgba(0,0,0,0.5);display:none;">
-  <button onclick="document.getElementById('bc-bubble').style.display='none';" style="position:absolute;top:5px;right:7px;background:none;border:none;color:rgba(255,255,255,0.5);font-size:14px;cursor:pointer;">✕</button>
+<!-- ============================================================================ -->
+<!-- CHAT WIDGET SECTION: Floating assistant bubble and embedded chat modal       -->
+<!-- Features: Delayed welcome bubble, toggleable modal iframe                    -->
+<!-- Mobile Padding: Positioned away from bottom CTA bar                          -->
+<!-- ============================================================================ -->
+<div id="bc-bubble" data-section="chat-widget" style="position:fixed;bottom:135px;right:16px;z-index:9999;max-width:240px;background:#1a1008;color:#fff;border-radius:16px 16px 0 16px;padding:14px 32px 14px 14px;font-size:13px;line-height:1.6;box-shadow:0 4px 20px rgba(0,0,0,0.5);display:none;">
+  <button type="button" onclick="document.getElementById('bc-bubble').style.display='none';" style="position:absolute;top:5px;right:7px;background:none;border:none;color:rgba(255,255,255,0.5);font-size:14px;cursor:pointer;">✕</button>
   👋 Welcome! You can join or access our <strong style="color:#F5B800;">The Fan Zone</strong> VIP Club here, or ask me any questions!
 </div>
 <div id="bc-btn" style="position:fixed;bottom:24px;right:16px;z-index:9999;cursor:pointer;" onclick="bcT()">
-  <img src="https://krowdimg.b-cdn.net/buds-chat-icon%20.png" style="width:100px;height:100px;object-fit:contain;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.4));">
+  <img src="https://krowdimg.b-cdn.net/buds-chat-icon%20.png" alt="Open Bub's chat assistant" style="width:100px;height:100px;object-fit:contain;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.4));">
 </div>
 <div id="bc-modal" style="display:none;position:fixed;bottom:135px;right:16px;width:320px;height:480px;z-index:9998;border-radius:14px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.5);border:2px solid #F5B800;">
-  <button onclick="bcC()" style="position:absolute;top:7px;right:9px;z-index:9999;background:rgba(0,0,0,0.55);border:none;color:#fff;font-size:14px;cursor:pointer;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;">✕</button>
-  <iframe src="https://paymegpt.com/agents/6081365/embed" style="width:100%;height:100%;border:none;"></iframe>
+  <button type="button" onclick="bcC()" style="position:absolute;top:7px;right:9px;z-index:9999;background:rgba(0,0,0,0.55);border:none;color:#fff;font-size:14px;cursor:pointer;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;">✕</button>
+  <iframe src="https://paymegpt.com/agents/6081365/embed" title="Bub's chat assistant" style="width:100%;height:100%;border:none;"></iframe>
 </div>
 
 <script>
+/* ===== CHAT WIDGET STATE ===== */
+/* Tracks whether the embedded assistant modal is currently open. */
 var _o=false;
+
+// ===== CHAT MODAL TOGGLE =====
+// Function: bcT()
+// Purpose: Hide welcome bubble and toggle the embedded chat assistant modal.
+// Triggers: Click on floating chat icon.
 function bcT(){document.getElementById('bc-bubble').style.display='none';_o=!_o;document.getElementById('bc-modal').style.display=_o?'block':'none';}
+
+// ===== CHAT MODAL CLOSE =====
+// Function: bcC()
+// Purpose: Close the embedded chat assistant modal and reset open state.
+// Triggers: Click on modal close button.
 function bcC(){_o=false;document.getElementById('bc-modal').style.display='none';}
+
+// ===== DELAYED CHAT WELCOME BUBBLE =====
+// Function: setTimeout callback
+// Purpose: Show the chat welcome message after a short delay if chat is not open.
+// Triggers: Automatically runs 3 seconds after page load.
 setTimeout(function(){var b=document.getElementById('bc-bubble');if(b&&!_o)b.style.display='block';},3000);
+
+// ===== CATERING FORM SUBMISSION =====
+// Function: submit event listener callback
+// Purpose: Send catering request data to webhook and show confirmation message.
+// Triggers: User submits the catering request form.
 document.getElementById('catForm').addEventListener('submit',async function(e){
   e.preventDefault();var btn=document.querySelector('.btn-submit');btn.textContent='Submitting...';btn.disabled=true;
   try{await fetch('https://paymegpt.com/api/webhooks/flow/2796/e13109539d66f84e5d134515621c8cd1aef2d99f25bf330e5b09d6d85a6eac20',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contactName:document.getElementById('cName').value,contactEmail:document.getElementById('cEmail').value,contactPhone:document.getElementById('cPhone').value,data:{'Full Name':document.getElementById('cName').value,'Phone':document.getElementById('cPhone').value,'Email':document.getElementById('cEmail').value,'Company':document.getElementById('cCompany').value,'Number of People':document.getElementById('cNum').value,'Date':document.getElementById('cDate').value,'Time':document.getElementById('cTime').value,'Service Type':document.getElementById('cType').value,'Budget per Person':document.getElementById('cBudget').value,'Description':document.getElementById('cRequests').value,'How Did You Hear':document.getElementById('cHear').value,'SMS Consent':document.getElementById('cSms').checked?'Yes':'No'}})});}catch(e){}
