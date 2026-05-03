@@ -1,9 +1,37 @@
+/* ===== CHAT WIDGET STATE ===== */
+/* Tracks whether the embedded chat modal is open */
 var _o=false;
+
+// ===== CHAT MODAL TOGGLE =====
+// Function: bcT()
+// Purpose: Show or hide the embedded Fan Zone chat modal and dismiss the welcome bubble
+// Triggers: Click on the floating chat launcher button
 function bcT(){document.getElementById('bc-bubble').style.display='none';_o=!_o;document.getElementById('bc-modal').style.display=_o?'block':'none';}
+
+// ===== CHAT MODAL CLOSE =====
+// Function: bcC()
+// Purpose: Close the embedded Fan Zone chat modal and reset open state
+// Triggers: Click on the chat modal close button
 function bcC(){_o=false;document.getElementById('bc-modal').style.display='none';}
+
+// ===== CHAT WELCOME TIMER =====
+// Function: setTimeout callback
+// Purpose: Display the chat welcome bubble after a short delay if chat is not open
+// Triggers: Automatic page-load timer
 setTimeout(function(){var b=document.getElementById('bc-bubble');if(b&&!_o)b.style.display='block';},3000);
+
+// ===== MENU TAB INTERACTION =====
+// Function: tab click event callback
+// Purpose: Activate the selected menu category and hide inactive sections
+// Triggers: Click on any category tab button
 document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});document.querySelectorAll('.sec').forEach(function(x){x.classList.remove('active');});t.classList.add('active');var s=document.getElementById('s-'+t.dataset.s);if(s)s.classList.add('active');});});
+
+// ===== MENU CARD TEMPLATE =====
+// Function: card(i)
+// Purpose: Convert a menu item object into a visible menu card with image, description, and price
+// Triggers: Called while rendering full menu and category menu sections
 function card(i){var img=i.image?'<img src="'+i.image+'" alt="'+i.name+'" loading="lazy">':'<div class="card-ph">'+i.e+'</div>';var d=i.desc?'<div class="card-d">'+i.desc+'</div>':'<div class="card-d"></div>';var p=i.price?'<div class="card-p">$'+i.price.toFixed(2)+'</div>':'';return'<div class="card">'+img+'<div class="card-b"><div class="card-n">'+i.name+'</div>'+d+p+'</div></div>';}
+
 var S=[{name:'Chicken Tenders',image:'https://krowdimg.b-cdn.net/1062_20250831094650.jpg',desc:'Homemade chicken tenders with a crispy cereal finish, served with crinkle-cut fries.',price:18.75,e:'🍗'},{name:'Borracha Queso Dip',image:'https://krowdimg.b-cdn.net/1062_20250831094804.jpg',desc:'Queso with Anaheim chilis and chorizo, topped with mozzarella and salsa fresca, with warm tortilla chips.',price:17.75,e:'🧀'},{name:'Corn Dogs',image:'https://krowdimg.b-cdn.net/1062_20250831094815.jpg',desc:'Mini chicken corn dogs cooked to a golden brown and piled high with tater tots.',price:15.75,e:'🌭'},{name:'Conan the Bavarian Pretzel',image:'https://krowdimg.b-cdn.net/1062_20250831094826.jpg',desc:'Giant pretzel baked to order with cheese sauce and sweet whole grain mustard.',price:null,e:'🥨'},{name:'Chips, Salsa & Guac',image:'https://krowdimg.b-cdn.net/1062_20250831094837.jpg',desc:'Fresh corn tortilla chips with housemade salsa and guacamole.',price:12.25,e:'🫔'},{name:'Ballpark Nachos',image:'https://krowdimg.b-cdn.net/1062_20250831095038.jpg',desc:'Grilled chicken, ballpark chili, jack & cheddar, pico de gallo, jalapeños, sour cream, guacamole.',price:20.50,e:'🫔'}];
 var W=[{name:'Grilled Wings 5pc',image:'https://krowdimg.b-cdn.net/1062_20250831095100.jpg',desc:'Juicy and tender grilled wings.',price:11.50,e:'🍗'},{name:'Grilled Wings 10pc',image:'https://krowdimg.b-cdn.net/1062_20250831095118.jpg',desc:'Juicy and tender grilled wings.',price:21.75,e:'🍗'},{name:'Boneless Wings',image:'https://krowdimg.b-cdn.net/1062_20250831095202.jpg',desc:'Homemade, breaded, and fried to order.',price:16.50,e:'🍗'},{name:'Cali-Flower Wings',image:'https://krowdimg.b-cdn.net/1062_20250831095143.jpg',desc:'Lightly dusted cauliflower florets tossed in your favorite wing sauce.',price:16.75,e:'🥦'},{name:'Garbage Wings',image:'https://krowdimg.b-cdn.net/1062_20250831095238.jpg',desc:'Original flavors with bacon, almonds, blue cheese crumbles, red onion, and sesame seeds.',price:22.75,e:'🍗'},{name:'Russian Roulette Wings',image:'https://krowdimg.b-cdn.net/1062_20250831095254.jpg',desc:'Nine grilled buffalo wings and one really friggin\' spicy bullet.',price:22.75,e:'🔥'}];
 var T=[{name:'Tater Skin Tots',image:'https://krowdimg.b-cdn.net/1062_20250831095744.jpg',desc:'Crispy tots smothered with cheddar, pepper jack, bacon, scallions, and sour cream.',price:18.50,e:'🥔'},{name:"Schm'animal Tots",image:'https://krowdimg.b-cdn.net/1062_20250831095756.jpg',desc:'Tots with cheese, caramelized bacon-onions, and homemade Thousand Island.',price:18.50,e:'🥔'},{name:'Buffalo Tots',image:'https://krowdimg.b-cdn.net/1062_20250831095815.jpg',desc:"Frank's Red Hot chicken tenders with cheddar, jalapeño jack, and blue cheese crumbles.",price:18.50,e:'🌶️'},{name:'Nachyo Tots',image:'https://krowdimg.b-cdn.net/1062_20250831095828.jpg',desc:'Tots with tons of cheese, salsa, jalapeños, sour cream, and guacamole.',price:18.50,e:'🥔'},{name:'Pittsburgh Tots',image:'https://krowdimg.b-cdn.net/1062_20250831095845.jpg',desc:'Thinly sliced steak with grilled peppers, mushrooms, onions, swiss and mozzarella.',price:18.50,e:'🥩'},{name:'Archie Tots',image:'https://krowdimg.b-cdn.net/1062_20250831095902.jpg',desc:'Grilled chicken, mushrooms, swiss & mozzarella cheese, with Archie sauce.',price:18.50,e:'🍄'}];
@@ -15,6 +43,11 @@ var E=[{name:'Steakums',image:'https://krowdimg.b-cdn.net/1062_20250831100909.jp
 var SI=[{name:'Regular Tater Tots',image:'https://krowdimg.b-cdn.net/1062_20250831095016.jpg',desc:'',price:7.75,e:'🥔'},{name:'Crinkle Cut Fries',image:'https://krowdimg.b-cdn.net/1062_20250831095018.jpg',desc:'',price:7.75,e:'🍟'},{name:'Onion Rings',image:'https://krowdimg.b-cdn.net/1062_20250831095021.jpg',desc:'',price:9.75,e:'🧅'},{name:'Sweet Potato Tots',image:'https://krowdimg.b-cdn.net/1062_20250831095027.jpg',desc:'',price:9.25,e:'🍠'}];
 var GRPS=[['🧅 Starters',S],['🍗 Wings',W],['🥔 Loaded Tots',T],['🥗 Salads & Bowls',SA],['🍲 Soup & Chili',SO],['🍔 Burgers',B],['🥪 Sandwiches',SW],['🍽️ Entrees',E],['🍟 Sides',SI]];
 var SECS=[['starters','🧅 Starters',S],['wings','🍗 Wings',W],['tots','🥔 Loaded Tots',T],['salads','🥗 Salads & Bowls',SA],['soup','🍲 Soup & Chili',SO],['burgers','🍔 Burgers',B],['sandwiches','🥪 Sandwiches',SW],['entrees','🍽️ Entrees',E],['sides','🍟 Sides',SI]];
+
+// ===== MENU RENDERING =====
+// Function: dynamic render block
+// Purpose: Build the full menu panel and each category-specific panel from structured menu arrays
+// Triggers: Runs immediately after menu data is defined
 var html='<div class="sec active" id="s-all"><div class="sec-h">🍽️ Full Menu</div>';
 GRPS.forEach(function(g){html+='<div class="grp"><div class="grp-t">'+g[0]+'</div><div class="grid">';g[1].forEach(function(i){html+=card(i);});html+='</div></div>';});html+='</div>';
 SECS.forEach(function(s){html+='<div class="sec" id="s-'+s[0]+'"><div class="sec-h">'+s[1]+'</div><div class="grid">';s[2].forEach(function(i){html+=card(i);});html+='</div></div>';});
