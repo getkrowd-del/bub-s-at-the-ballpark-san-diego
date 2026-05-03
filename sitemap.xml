@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://bubs.getkrowd.com/happyhour/</loc>
+    <lastmod>2026-05-03T21:20:55.134Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://bubs.getkrowd.com/events/</loc>
     <lastmod>2026-05-03T21:01:02.228Z</lastmod>
     <changefreq>weekly</changefreq>
@@ -8,11 +13,6 @@
   <url>
     <loc>https://bubs.getkrowd.com/foodmenu/</loc>
     <lastmod>2026-05-03T20:58:06.435Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://bubs.getkrowd.com/happyhour/</loc>
-    <lastmod>2026-05-03T20:57:56.055Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
