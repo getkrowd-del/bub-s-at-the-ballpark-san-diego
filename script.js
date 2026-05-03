@@ -1,0 +1,40 @@
+document.getElementById('heroPauseBtn').addEventListener('click',function(){var v=document.getElementById('heroVideo');if(v.paused){v.play();this.textContent='⏸';}else{v.pause();this.textContent='▶';}});
+(function(){var IMGS=['https://static.spotapps.co/spots/0b/a1e5f49b8443f5929d882485a0ddae/medium','https://static.spotapps.co/spots/d3/e25a4e66b2444599072cdd06d109f9/medium','https://static.spotapps.co/spots/14/8c025beac24d41ba0a0dd321d2ff70/medium','https://static.spotapps.co/spots/04/8cf2bfd65048349ebb73dab5878c6d/medium','https://static.spotapps.co/spots/81/283442b0f64477b9b043827a9ee3c9/medium','https://static.spotapps.co/spots/04/7eaeec801f46e780d148a0bb400708/medium','https://static.spotapps.co/spots/3c/1838179d7846089d64721fb4ea23d7/medium','https://static.spotapps.co/spots/85/52a7a8202d4073b2d3477bae8cb5c7/medium','https://static.spotapps.co/spots/95/25b3bcf377488f92aafdda716a5cff/medium','https://static.spotapps.co/spots/12/544789112c4304919466c767b659fc/medium','https://static.spotapps.co/spots/fa/3f5acea23c4228983516b9dbab7d8b/medium','https://static.spotapps.co/spots/97/d4b41db19743018048b06faed4f6d0/medium','https://static.spotapps.co/spots/7d/f42b06bd2541f5800d073430a4c36a/medium','https://static.spotapps.co/spots/e0/155c705b534859a5460f899dc07c65/medium','https://static.spotapps.co/spots/60/3da120897e4a1083bdb5fce4b66dd8/medium','https://static.spotapps.co/spots/e0/993f8ef80940b2abb97b91ad6e2c96/medium','https://static.spotapps.co/spots/27/4f37cc124842baa68797125c6a4e0e/medium','https://static.spotapps.co/spots/f1/2a03db79874e39962847efa78220ea/medium','https://static.spotapps.co/spots/d6/9d7c75f05b4bb9aa491f1f4afb62f3/medium','https://static.spotapps.co/spots/06/e304dd31dc4352b946d040ceb0d23a/medium','https://static.spotapps.co/spots/02/698bee98b04bccabed53e096e72dab/medium'];
+var track=document.getElementById('carouselTrack');
+IMGS.concat(IMGS).concat(IMGS).forEach(function(src){var f=document.createElement('div');f.className='carousel-frame';var i=document.createElement('img');i.src=src;i.alt="Bub's";i.loading='lazy';f.appendChild(i);track.appendChild(f);});
+var N=IMGS.length,STEP=315,idx=N,playing=true,timer=null;
+function move(i,anim){track.style.transition=anim?'transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94)':'none';track.style.transform='translateX(-'+(i*STEP)+'px)';idx=i;}
+track.addEventListener('transitionend',function(){if(idx>=N*2)move(idx-N,false);else if(idx<N)move(idx+N,false);});
+move(idx,false);
+function start(){stop();timer=setInterval(function(){move(idx+1,true);},2800);}function stop(){if(timer){clearInterval(timer);timer=null;}}start();
+document.getElementById('carouselNext').addEventListener('click',function(){move(idx+1,true);if(playing){stop();start();}});
+document.getElementById('carouselPrev').addEventListener('click',function(){move(idx-1,true);if(playing){stop();start();}});
+document.getElementById('carouselPauseBtn').addEventListener('click',function(){if(playing){stop();playing=false;this.innerHTML='&#9654; Play';}else{start();playing=true;this.innerHTML='&#9646;&#9646; Pause';}});
+})();
+(function(){var FALLBACK=[{reviewer:'Trey Crockett',rating:5,text:'Great sports bar for wings and a healthy selection of taps.',photo:'https://lh3.googleusercontent.com/a-/ALV-UjWPH43Bow_OvZHyB-Y7Pyyd9i_k_rkzyNOLna6tobd66NJ1o45snQ=s120-c-rp-mo-ba3-br100'},{reviewer:'Sharonda Basemore',rating:5,text:'Burgers and tots were amazing.',photo:'https://lh3.googleusercontent.com/a-/ALV-UjVB4wFohOU5xifrwE5UU66regsncFufzyRUPUelQZaHqVVjzK07xg=s120-c-rp-mo-ba4-br100'},{reviewer:'Lykeitha Banks',rating:5,text:'Best wings hands down.',photo:'https://lh3.googleusercontent.com/a/ACg8ocLvvuQX11pqoLGQAEWKk3JKzkGLtLjTmJsIYon0DmLATnioKQ=s120-c-rp-mo-ba2-br100'},{reviewer:'Alex & Erika on YouTube',rating:5,text:'My favorite place before a baseball game!',photo:'https://lh3.googleusercontent.com/a-/ALV-UjWQ2f1anNxfVPxq40LjYTFRcD_EqfqpAxBPXGMQxkcMlHGomZchIg=s120-c-rp-mo-ba5-br100'},{reviewer:'Marcel Marshall',rating:5,text:'Great service and food.',photo:'https://lh3.googleusercontent.com/a/ACg8ocIeUHFIy_UiZQZafSprU06njHSjaCFtsjZCgH_AtgMNiusyQg=s120-c-rp-mo-ba3-br100'}];
+var reviews=[],cur=0,playing=true,timer=null;
+var nameEl=document.getElementById('reviewName'),starsEl=document.getElementById('reviewStars'),textEl=document.getElementById('reviewText'),avatarEl=document.getElementById('reviewAvatar'),dotsEl=document.getElementById('reviewsDots'),ppBtn=document.getElementById('reviewsPlayPause');
+function stars(n){return'★'.repeat(n)+'☆'.repeat(5-n);}
+function buildDots(){dotsEl.innerHTML='';reviews.forEach(function(_,i){var d=document.createElement('button');d.className='reviews-dot'+(i===cur?' active':'');d.addEventListener('click',function(){show(i);reset();});dotsEl.appendChild(d);});}
+function show(i){cur=(i+reviews.length)%reviews.length;var r=reviews[cur];nameEl.textContent=r.reviewer+':';starsEl.textContent=stars(r.rating);textEl.textContent=r.text;avatarEl.src=r.photo;avatarEl.alt=r.reviewer;dotsEl.querySelectorAll('.reviews-dot').forEach(function(d,idx){d.classList.toggle('active',idx===cur);});}
+function startAuto(){stopAuto();timer=setInterval(function(){show(cur+1);},5000);}function stopAuto(){if(timer){clearInterval(timer);timer=null;}}function reset(){if(playing){stopAuto();startAuto();}}
+function init(data){reviews=data;buildDots();show(0);startAuto();}
+document.getElementById('reviewPrev').addEventListener('click',function(){show(cur-1);reset();});
+document.getElementById('reviewNext').addEventListener('click',function(){show(cur+1);reset();});
+ppBtn.addEventListener('click',function(){if(playing){stopAuto();playing=false;ppBtn.innerHTML='&#9654;';}else{startAuto();playing=true;ppBtn.innerHTML='&#9646;&#9646;';}});
+fetch('https://corsproxy.io/?'+encodeURIComponent('https://api.getkrowd.com/v3/reviews/index.cfm?companyId=1062&apiKey=krwd_5ec5faa630ad660e94f8aef336cfd87042613b3f0a91bd8de898a3cb1be')).then(function(r){return r.json();}).then(function(data){if(data&&data.reviews&&data.reviews.length){var f=data.reviews.filter(function(r){return r.text&&r.text.trim().length>0;});if(f.length>0){init(f.map(function(r){return{reviewer:r.reviewer,rating:r.rating,text:r.text,photo:r.user_photo};}));return;}}init(FALLBACK);}).catch(function(){init(FALLBACK);});
+})();
+(function(){var slides=document.querySelectorAll('.hs-slide');var dotsC=document.getElementById('hsDots');var pauseBtn=document.getElementById('hs-pause');var cur=0,playing=true,timer=null;
+slides.forEach(function(_,i){var d=document.createElement('button');d.className='hs-dot'+(i===0?' hs-dot-active':'');d.addEventListener('click',function(){goTo(i);reset();});dotsC.appendChild(d);});
+function goTo(n){slides[cur].classList.remove('hs-active');dotsC.children[cur].classList.remove('hs-dot-active');cur=(n+slides.length)%slides.length;slides[cur].classList.add('hs-active');dotsC.children[cur].classList.add('hs-dot-active');}
+function startAuto(){stopAuto();timer=setInterval(function(){goTo(cur+1);},4000);}function stopAuto(){if(timer){clearInterval(timer);timer=null;}}function reset(){if(playing){stopAuto();startAuto();}}
+document.getElementById('hsNextBtn').addEventListener('click',function(){goTo(cur+1);reset();});
+document.getElementById('hsPrevBtn').addEventListener('click',function(){goTo(cur-1);reset();});
+pauseBtn.addEventListener('click',function(){if(playing){stopAuto();playing=false;pauseBtn.innerHTML='&#9654;';}else{startAuto();playing=true;pauseBtn.innerHTML='&#9646;&#9646;';}});
+startAuto();
+})();
+
+var _bcOpen=false;
+function bcToggle(){document.getElementById('bc-bubble').style.display='none';_bcOpen=!_bcOpen;document.getElementById('bc-modal').style.display=_bcOpen?'block':'none';}
+function bcClose(){_bcOpen=false;document.getElementById('bc-modal').style.display='none';}
+setTimeout(function(){var b=document.getElementById('bc-bubble');if(b&&!_bcOpen)b.style.display='block';},3000);
