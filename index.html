@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- BASE:START (managed by Coding Agent — do not edit) -->
+<base href="/bub-s-at-the-ballpark-san-diego/">
+<!-- BASE:END -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Oswald:wght@400;600;700&family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+
+
+<!-- SEO Meta Tags -->
+<title>Bub's at the Ballpark – San Diego</title>
+<meta property="og:title" content="Bub's at the Ballpark – San Diego" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Bub's at the Ballpark – San Diego" />
+<link rel="icon" href="https://paymegpt.com/api/landing-pages/images/landing-page-images%2F0%2F1777548599703_blob.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://paymegpt.com/api/landing-pages/images/landing-page-images%2F0%2F1777548599703_blob.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://paymegpt.com/api/landing-pages/images/landing-page-images%2F0%2F1777548599703_blob.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://paymegpt.com/api/landing-pages/images/landing-page-images%2F0%2F1777548599703_blob.png" />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=3598');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='iNBxiygZ5';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div data-section="announcement" class="prom-bar">
+  <p>Graduation Parties - Let us help you make this graduation season special if you are honoring any new graduates.</p>
+  <a class="btn" href="https://bubssandiego.com/-party?source=header&spot_id=15131&destination=private_parties&promotion=graduation_party">Book your party</a>
+</div>
+<nav data-section="navbar">
+  <div class="nav-inner">
+    <ul class="nav-left">
+      <li><a href="https://paymegpt.com/p/kfEyuFB">Menu</a></li>
+      <li><a href="https://paymegpt.com/p/bgdVAj">Drinks</a></li>
+      <li><a href="https://paymegpt.com/p/ch6wVfUq">Events</a></li>
+      <li><a href="https://paymegpt.com/p/vnYtdPzuPa">Happy Hour</a></li>
+    </ul>
+    <div class="nav-logo"><a href="https://bubssandiego.com/"><img src="https://static.spotapps.co/website_images/ab_websites/15131_website_v1/logo.png" alt="Bub's at the Ballpark"></a></div>
+    <ul class="nav-right">
+      <li><a href="https://paymegpt.com/p/zQf4DpTq">Parties</a></li>
+      <li><a href="https://paymegpt.com/p/n6ery3BVY">Catering</a></li>
+      <li class="nav-order"><a href="https://order.toasttab.com/online/bubs-at-the-ballpark-715-j-st">Order</a></li>
+      <li><a href="https://bubssandiego.com/about">About</a></li>
+    </ul>
+  </div>
+  <div class="nav-social-fixed">
+    <a href="https://x.com/BubsBallpark" target="_blank"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.254 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://www.facebook.com/BubsBallpark/" target="_blank"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    <a href="https://www.instagram.com/bubsballpark" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    <a href="https://www.google.com/search?q=Bub%27s+at+the+Ballpark+Reviews#lrd=0x80d9535bc634e4dd:0xd2b6c411c1f47c6c,1,,,," target="_blank"><svg viewBox="0 0 24 24"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg></a>
+  </div>
+  <button class="mob-menu-btn" id="mobMenuBtn" onclick="document.getElementById('mobNav').style.display=document.getElementById('mobNav').style.display==='block'?'none':'block'">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="mob-nav" id="mobNav">
+    <a href="https://paymegpt.com/p/kfEyuFB">Menu</a>
+    <a href="https://paymegpt.com/p/bgdVAj">Drinks</a>
+    <a href="https://paymegpt.com/p/ch6wVfUq">Events</a>
+    <a href="https://paymegpt.com/p/vnYtdPzuPa">Happy Hour</a>
+    <a href="https://paymegpt.com/p/zQf4DpTq">Parties</a>
+    <a href="https://paymegpt.com/p/n6ery3BVY">Catering</a>
+    <a href="https://order.toasttab.com/online/bubs-at-the-ballpark-715-j-st">Order Now</a>
+    <a href="https://paymegpt.com/p/K98LLW">About</a>
+  </div>
+</nav>
+<section data-section="hero" class="hero">
+  <video id="heroVideo" autoplay muted loop playsinline poster="https://static.spotapps.co/website_images/ab_websites/15131_website_v1/video_poster1.jpg">
+    <source src="https://static.spotapps.co/website_videos/Bubs_Edited_V1_Vimeo720p30.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">San Diego's Home for</span>
+    <span class="hero-title-top">Bubs at the</span>
+    <span class="hero-title-bottom">Ballpark</span>
+    <div class="hero-cta">
+      <a href="https://bubssandiego.com/food-menu" class="btn-primary">View Menu</a>
+      <a href="https://order.toasttab.com/online/bubs-at-the-ballpark-715-j-st" class="btn-outline">Order Now</a>
+    </div>
+  </div>
+  <button class="hero-pause-btn" id="heroPauseBtn">⏸</button>
+</section>
+<div data-section="drinks" class="drinks-carousel-section">
+  <div class="drinks-text">
+    <h2>Drinks That Hit Different</h2>
+    <span class="eyebrow">Cold Beers, Classic Cocktails, Good Times</span>
+    <p>From ice-cold beers to handcrafted cocktails, our drink menu is made to keep the good times going. Grab a drink, catch the game, and soak in the San Diego atmosphere — Bub's style.</p>
+    <a href="https://paymegpt.com/p/bgdVAj" class="btn-drinks-outline">Drinks</a>
+  </div>
+  <div class="carousel-wrap">
+    <button class="carousel-arrow left" id="carouselPrev">&#8249;</button>
+    <button class="carousel-arrow right" id="carouselNext">&#8250;</button>
+    <div class="carousel-viewport"><div class="carousel-track" id="carouselTrack"></div></div>
+    <button class="carousel-pause-btn" id="carouselPauseBtn">&#9646;&#9646; Pause</button>
+  </div>
+</div>
+<div data-section="tagline" class="baseball-tagline">
+  <h2>Where Baseball Season Takes Center Stage,<br>Eight Months a Year</h2>
+</div>
+<section data-section="events" class="content-section section-events" id="events">
+  <div class="cs-text">
+    <span class="cs-eyebrow">Cold Beers · Classic Cocktails · Good Times</span>
+    <h2>Events &amp;<br>Game Days</h2>
+    <p>From ice-cold beers to handcrafted cocktails, our drink menu is made to keep the good times going. Grab a drink, catch the game, and soak in the San Diego atmosphere — Bub's style.</p>
+    <a href="https://paymegpt.com/p/ch6wVfUq" class="btn-red">Events</a>
+  </div>
+  <div class="cs-img"><img src="https://static.spotapps.co/website_images/ab_websites/15131_website_v1/events.jpg" alt="Events and Game Days at Bub's"></div>
+</section>
+<section data-section="parties" class="content-section section-parties" id="parties">
+  <div class="cs-img"><img src="https://static.spotapps.co/website_images/ab_websites/15131_website_v1/parties.jpg" alt="Private Parties at Bub's"></div>
+  <div class="cs-text">
+    <span class="cs-eyebrow">Your Party. Our Place.</span>
+    <h2>Private Parties<br>at Bub's</h2>
+    <p>Looking for the perfect spot to celebrate? Bub's is built for good times. Whether it's a birthday, reunion, or special occasion, enjoy great food, cold drinks, and a lively atmosphere right in the heart of San Diego.</p>
+    <a href="https://paymegpt.com/p/zQf4DpTq" class="btn-white-outline">Book a Party</a>
+  </div>
+</section>
+<section data-section="catering" class="content-section section-catering" id="catering">
+  <div class="cs-text">
+    <span class="cs-eyebrow">Big Flavors for Big Crowds</span>
+    <h2>Bub's Catering</h2>
+    <p>Bring the Bub's experience to your next event. From game-day gatherings to office lunches and private celebrations, our catering delivers crowd-favorite food, bold flavors, and reliable service.</p>
+    <a href="https://paymegpt.com/p/n6ery3BVY" class="btn-dark-outline">Catering</a>
+  </div>
+  <div class="cs-img"><img src="https://static.spotapps.co/website_images/ab_websites/15131_website_v1/catering.jpg" alt="Bub's Catering"></div>
+</section>
+<div data-section="gallery-1" class="photo-grid">
+  <div class="pg-large"><img src="https://static.spotapps.co/spots/0b/a1e5f49b8443f5929d882485a0ddae/full" alt="Bub's"></div>
+  <div class="pg-small-grid">
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/d3/e25a4e66b2444599072cdd06d109f9/medium" alt="Bub's"></div>
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/14/8c025beac24d41ba0a0dd321d2ff70/medium" alt="Bub's"></div>
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/04/8cf2bfd65048349ebb73dab5878c6d/medium" alt="Bub's"></div>
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/81/283442b0f64477b9b043827a9ee3c9/medium" alt="Bub's"></div>
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/04/7eaeec801f46e780d148a0bb400708/medium" alt="Bub's"></div>
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/3c/1838179d7846089d64721fb4ea23d7/medium" alt="Bub's"></div>
+  </div>
+</div>
+<div data-section="gallery-2" class="photo-grid">
+  <div class="pg-large"><img src="https://static.spotapps.co/spots/85/52a7a8202d4073b2d3477bae8cb5c7/full" alt="Bub's"></div>
+  <div class="pg-small-grid">
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/95/25b3bcf377488f92aafdda716a5cff/medium" alt="Bub's"></div>
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/12/544789112c4304919466c767b659fc/medium" alt="Bub's"></div>
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/fa/3f5acea23c4228983516b9dbab7d8b/medium" alt="Bub's"></div>
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/97/d4b41db19743018048b06faed4f6d0/medium" alt="Bub's"></div>
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/7d/f42b06bd2541f5800d073430a4c36a/medium" alt="Bub's"></div>
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/e0/155c705b534859a5460f899dc07c65/medium" alt="Bub's"></div>
+  </div>
+</div>
+<div data-section="gallery-3" class="photo-grid">
+  <div class="pg-large"><img src="https://static.spotapps.co/spots/60/3da120897e4a1083bdb5fce4b66dd8/full" alt="Bub's"></div>
+  <div class="pg-small-grid">
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/e0/993f8ef80940b2abb97b91ad6e2c96/medium" alt="Bub's"></div>
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/27/4f37cc124842baa68797125c6a4e0e/medium" alt="Bub's"></div>
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/f1/2a03db79874e39962847efa78220ea/medium" alt="Bub's"></div>
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/d6/9d7c75f05b4bb9aa491f1f4afb62f3/medium" alt="Bub's"></div>
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/06/e304dd31dc4352b946d040ceb0d23a/medium" alt="Bub's"></div>
+    <div class="pg-small"><img src="https://static.spotapps.co/spots/02/698bee98b04bccabed53e096e72dab/medium" alt="Bub's"></div>
+  </div>
+</div>
+<div data-section="testimonials" class="reviews-section">
+  <div class="reviews-heading">Reviews</div>
+  <div class="reviews-subheading">Reviews By – Google</div>
+  <div class="reviews-carousel">
+    <button class="review-nav-btn prev" id="reviewPrev">&#8249;</button>
+    <div class="review-inner">
+      <div class="review-quote-open">&ldquo;</div>
+      <div class="review-content">
+        <div class="review-meta">
+          <img class="review-avatar" id="reviewAvatar" src="" alt="">
+          <span class="review-name" id="reviewName"></span>
+          <span class="review-stars" id="reviewStars"></span>
+        </div>
+        <div class="review-text" id="reviewText"></div>
+      </div>
+      <div class="review-quote-close">&rdquo;</div>
+    </div>
+    <button class="review-nav-btn next" id="reviewNext">&#8250;</button>
+  </div>
+  <div class="reviews-dots" id="reviewsDots"></div>
+  <button class="reviews-play-pause" id="reviewsPlayPause">&#9646;&#9646;</button>
+</div>
+
+<div data-section="slider" id="hs-section">
+  <div class="hs-slide hs-active">
+    <div class="hs-bg" style="background-image:url('https://static.spotapps.co/spots/55/c59a452c0446adb5e5e3e0b44d4aa3/:original');"></div>
+    <div class="hs-overlay"></div>
+    <div class="hs-content"><h2>Take a Look at Our Menu!</h2><a href="https://bubssandiego.com/food-menu" class="hs-btn">Our Menu</a></div>
+  </div>
+  <div class="hs-slide">
+    <div class="hs-bg" style="background-image:url('https://static.spotapps.co/spots/8e/bae6735f804be0b7f8945cbe62ea61/:original');"></div>
+    <div class="hs-overlay"></div>
+    <div class="hs-content"><h2>Check Out Our Specials!</h2><a href="https://bubssandiego.com/specials" class="hs-btn">Specials</a></div>
+  </div>
+  <div class="hs-slide">
+    <div class="hs-bg" style="background-image:url('https://static.spotapps.co/spots/14/8c025beac24d41ba0a0dd321d2ff70/:original');"></div>
+    <div class="hs-overlay"></div>
+    <div class="hs-content"><h2>Take a Look at Our Drinks!</h2><a href="https://bubssandiego.com/drink-menu" class="hs-btn">Our Drinks</a></div>
+  </div>
+  <button class="hs-arrow" style="left:0;" id="hsPrevBtn">&#8249;</button>
+  <button class="hs-arrow" style="right:0;" id="hsNextBtn">&#8250;</button>
+  <div class="hs-dots" id="hsDots"></div>
+  <button id="hs-pause">&#9646;&#9646;</button>
+</div>
+<div data-section="merch" class="merch-section">
+  <img src="https://static.spotapps.co/website_images/ab_websites/15131_website_v1/merch.png" alt="Bub's Merch">
+  <a href="https://www.fusiongraphicsinc.com/bubs.html" class="btn-merch">Merch</a>
+</div>
+
+<!-- ORDER NOW -->
+<div data-section="order-cta" style="position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 40px 60px;text-align:center;">
+  <div style="position:absolute;inset:0;background-image:url('https://static.spotapps.co/website_images/ab_websites/15131_website_v1/v8_bg.jpg');background-size:cover;background-position:center;z-index:0;"></div>
+  <div style="position:absolute;inset:0;background:rgba(0,0,0,0.55);z-index:1;"></div>
+  <img src="https://static.spotapps.co/website_images/ab_websites/15131_website_v1/title_decoration.png" alt="Bub's Burger" style="position:relative;z-index:2;max-height:320px;max-width:600px;width:100%;object-fit:contain;display:block;margin:0 auto -10px;">
+  <div style="position:relative;z-index:2;">
+    <h2 style="font-family:'Oswald',sans-serif;font-size:clamp(48px,7vw,80px);font-weight:700;text-transform:uppercase;color:#F5B800;letter-spacing:0.03em;margin-bottom:10px;text-shadow:0 3px 16px rgba(0,0,0,0.6);">Order Now</h2>
+    <p style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:0.2em;text-transform:uppercase;color:#fff;margin-bottom:16px;">Bub's Favorites, Wherever You Are</p>
+    <p style="font-family:'Barlow',sans-serif;font-size:16px;line-height:1.6;color:rgba(255,255,255,0.85);max-width:760px;margin:0 auto 30px;">Order online for takeout only and pick up your go-to game-day food and drinks to enjoy at home, with friends, or on the way to the game.</p>
+    <a href="https://order.toasttab.com/online/bubs-at-the-ballpark-715-j-st" style="display:inline-block;background:transparent;color:#fff;border:2px solid #fff;padding:13px 44px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;" onmouseover="this.style.background='#fff';this.style.color='#1a1008';" onmouseout="this.style.background='transparent';this.style.color='#fff';">Order Now</a>
+  </div>
+</div>
+<!-- NEWSLETTER + MAP -->
+<div data-section="newsletter" style="display:grid;grid-template-columns:1fr 1fr;background:#d0d0d0;min-height:320px;">
+  <div style="padding:60px 50px;display:flex;flex-direction:column;justify-content:center;gap:20px;">
+    <h2 style="font-family:'Oswald',sans-serif;font-size:clamp(40px,5vw,64px);font-weight:700;text-transform:uppercase;color:#1a1008;letter-spacing:0.02em;margin:0;">Newsletter</h2>
+    <p style="font-family:'Barlow',sans-serif;font-size:16px;color:#1a1008;line-height:1.6;margin:0;">Sign up for our newsletter &amp; get exclusive offers and invites!</p>
+    <div>
+      <p style="font-family:'Barlow',sans-serif;font-size:14px;color:#1a1008;margin:0 0 10px 0;">Email (required)</p>
+      <div style="display:flex;align-items:stretch;max-width:460px;">
+        <input type="email" placeholder="e.g. email@example.com" style="flex:1;border:none;border-bottom:2px solid #1a1008;background:transparent;padding:10px 8px;font-family:'Barlow',sans-serif;font-size:15px;color:#1a1008;outline:none;">
+        <button style="background:#F5B800;color:#1a1008;border:none;padding:10px 28px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;margin-left:8px;">Submit</button>
+      </div>
+    </div>
+  </div>
+  <div style="min-height:320px;">
+    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-117.1595%2C32.7105%2C-117.1545%2C32.7135&layer=mapnik&marker=32.7120%2C-117.1570" style="width:100%;height:100%;min-height:320px;border:none;display:block;" title="Bub's at the Ballpark map"></iframe>
+  </div>
+</div>
+<!-- LOCATION / HOURS / CONTACT -->
+<div data-section="contact" style="background:#0e0a06;padding:48px 60px;display:grid;grid-template-columns:1fr auto 1fr;gap:40px;align-items:center;">
+  <div>
+    <h4 style="font-family:'Oswald',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#F5B800;letter-spacing:0.12em;margin:0 0 12px 0;">Location</h4>
+    <p style="font-family:'Barlow',sans-serif;font-size:15px;color:rgba(255,255,255,0.75);line-height:1.8;margin:0 0 28px 0;">715 J St<br>San Diego, CA 92101</p>
+    <h4 style="font-family:'Oswald',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#F5B800;letter-spacing:0.12em;margin:0 0 12px 0;">Hours</h4>
+    <table style="font-family:'Barlow',sans-serif;font-size:14px;color:rgba(255,255,255,0.75);line-height:2;border-collapse:collapse;">
+      <tr><td style="padding-right:20px;white-space:nowrap;">Mon, Tue, Wed, Thur:</td><td>11:00 AM – 11:00 PM</td></tr>
+      <tr><td style="white-space:nowrap;">Fri:</td><td>11:00 AM – 12:00 AM</td></tr>
+      <tr><td style="white-space:nowrap;">Sat:</td><td>10:00 AM – 12:00 AM</td></tr>
+      <tr><td style="white-space:nowrap;">Sun:</td><td>9:30 AM – 11:00 PM</td></tr>
+    </table>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center;">
+    <img src="https://static.spotapps.co/website_images/ab_websites/15131_website_v1/footer_img.png" alt="Bub's at the Ballpark" style="height:130px;display:block;">
+  </div>
+  <div style="text-align:right;">
+    <h4 style="font-family:'Oswald',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#F5B800;letter-spacing:0.12em;margin:0 0 16px 0;">Find Us On</h4>
+    <div style="display:flex;gap:16px;justify-content:flex-end;align-items:center;margin-bottom:36px;">
+      <a href="https://x.com/BubsBallpark" target="_blank" style="color:rgba(255,255,255,0.7);text-decoration:none;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.254 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      <a href="https://www.facebook.com/BubsBallpark/" target="_blank" style="color:rgba(255,255,255,0.7);text-decoration:none;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+      <a href="https://www.instagram.com/bubsballpark" target="_blank" style="color:rgba(255,255,255,0.7);text-decoration:none;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+      <a href="https://www.google.com/search?q=Bub%27s+at+the+Ballpark+Reviews" target="_blank" style="color:rgba(255,255,255,0.7);text-decoration:none;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg></a>
+    </div>
+    <h4 style="font-family:'Oswald',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;color:#F5B800;letter-spacing:0.12em;margin:0 0 12px 0;">Contact Us</h4>
+    <p style="font-family:'Barlow',sans-serif;font-size:15px;color:rgba(255,255,255,0.75);line-height:2;margin:0;">
+      <a href="tel:6195460815" style="color:rgba(255,255,255,0.75);text-decoration:none;">(619)-546-0815</a><br>
+      <a href="mailto:info@bubssandiego.com" style="color:rgba(255,255,255,0.75);text-decoration:none;">info@bubssandiego.com</a>
+    </p>
+  </div>
+</div>
+
+<div data-section="footer" style="background:#0e0a06;padding:14px 60px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.5);font-family:'Barlow',sans-serif;">
+  <span>© 2024 Bub's at the Ballpark. All rights reserved.</span>
+  <span>bubssandiego.com</span>
+</div>
+<a class="btn-merch" href="https://www.fusiongraphicsinc.com/bubs.html">MERCH</a>
+
+<div data-section="chat">
+<div id="bc-bubble" style="position:fixed;bottom:160px;right:20px;z-index:9999;max-width:260px;background:#1a1008;color:#fff;border-radius:16px 16px 0 16px;padding:16px 36px 16px 16px;font-size:14px;line-height:1.6;box-shadow:0 4px 20px rgba(0,0,0,0.5);font-family:'Barlow',sans-serif;display:none;">
+  <button onclick="document.getElementById('bc-bubble').style.display='none';" style="position:absolute;top:6px;right:8px;background:none;border:none;color:rgba(255,255,255,0.5);font-size:15px;cursor:pointer;line-height:1;padding:2px 5px;">✕</button>
+  👋 Welcome! You can join or access our <strong style="color:#F5B800;">The Fan Zone</strong> VIP Club here, or ask me any questions you have!
+</div>
+<div id="bc-btn" style="position:fixed;bottom:24px;right:24px;z-index:9999;cursor:pointer;" onclick="bcToggle()">
+  <img src="https://krowdimg.b-cdn.net/buds-chat-icon%20.png" alt="Chat" style="width:125px;height:125px;object-fit:contain;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.4));">
+</div>
+<div id="bc-modal" style="display:none;position:fixed;bottom:160px;right:24px;width:370px;height:520px;z-index:9998;border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.5);border:2px solid #F5B800;">
+  <button onclick="bcClose()" style="position:absolute;top:8px;right:10px;z-index:9999;background:rgba(0,0,0,0.55);border:none;color:#fff;font-size:15px;cursor:pointer;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;">✕</button>
+  <iframe src="https://paymegpt.com/agents/6081365/embed" style="width:100%;height:100%;border:none;" title="Chat with Bub's"></iframe>
+</div>
+
+</div>
+<div data-section="mobile-action-bar" class="mob-bottom-bar">
+  <div class="mob-bottom-bar-inner">
+    <a href="https://order.toasttab.com/online/bubs-at-the-ballpark-715-j-st">ORDER</a>
+    <a href="https://paymegpt.com/p/zQf4DpTq">PARTIES</a>
+    <a href="https://paymegpt.com/p/n6ery3BVY">CATERING</a>
+  </div>
+</div>
+  <script src="script.js"></script>
+</body>
+</html>
