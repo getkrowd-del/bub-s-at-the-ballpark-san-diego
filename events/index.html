@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+
+
+<!-- SEO Meta Tags -->
+<title>Events – Bub's at the Ballpark</title>
+<meta property="og:title" content="Events – Bub's at the Ballpark" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Events – Bub's at the Ballpark" />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=3663');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='ch6wVfUq';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav data-section="navbar">
+  <div class="nav-inner">
+    <ul class="nav-left">
+      <li><a href="https://paymegpt.com/p/kfEyuFB">Menu</a></li>
+      <li><a href="https://paymegpt.com/p/bgdVAj">Drinks</a></li>
+      <li><a href="#" style="color:var(--gold);">Events</a></li>
+      <li><a href="https://paymegpt.com/p/vnYtdPzuPa">Happy Hour</a></li>
+    </ul>
+    <div class="nav-logo"><a href="https://paymegpt.com/p/iNBxiygZ5"><img src="https://static.spotapps.co/website_images/ab_websites/15131_website_v1/logo.png" alt="Bub's at the Ballpark"></a></div>
+    <ul class="nav-right">
+      <li><a href="https://paymegpt.com/p/zQf4DpTq">Parties</a></li>
+      <li><a href="https://paymegpt.com/p/n6ery3BVY">Catering</a></li>
+      <li class="nav-order"><a href="https://order.toasttab.com/online/bubs-at-the-ballpark-715-j-st">Order</a></li>
+      <li><a href="https://paymegpt.com/p/K98LLW">About</a></li>
+    </ul>
+  </div>
+  <div class="nav-social">
+    <a href="https://x.com/BubsBallpark" target="_blank"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.254 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://www.facebook.com/BubsBallpark/" target="_blank"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    <a href="https://www.instagram.com/bubsballpark" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    <a href="https://www.google.com/search?q=Bubs+at+the+Ballpark" target="_blank"><svg viewBox="0 0 24 24"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.908 3.162-1.9 4.155-1.225 1.225-3.138 2.568-6.94 2.568-6.159 0-11.01-4.99-11.01-11.148s4.851-11.148 11.01-11.148c3.342 0 5.85 1.322 7.64 3.017l2.314-2.314c-2.314-2.213-5.385-3.953-9.954-3.953-8.283 0-15 6.717-15 15s6.717 15 15 15c4.475 0 7.84-1.47 10.518-4.258 2.766-2.766 3.616-6.685 3.616-10.02 0-.96-.078-1.84-.23-2.68H12.48z"/></svg></a>
+  </div>
+  <button class="mob-menu-btn" onclick="var m=document.getElementById('mobNav');m.style.display=m.style.display==='block'?'none':'block'"><span></span><span></span><span></span></button>
+  <div class="mob-nav" id="mobNav"><a href="https://paymegpt.com/p/kfEyuFB">Menu</a><a href="https://paymegpt.com/p/bgdVAj">Drinks</a><a href="https://paymegpt.com/p/ch6wVfUq">Events</a><a href="https://paymegpt.com/p/vnYtdPzuPa">Happy Hour</a><a href="https://paymegpt.com/p/zQf4DpTq">Parties</a><a href="https://paymegpt.com/p/n6ery3BVY">Catering</a><a href="https://order.toasttab.com/online/bubs-at-the-ballpark-715-j-st">Order Now</a><a href="https://paymegpt.com/p/K98LLW">About</a></div>
+</nav>
+
+<div class="mob-bottom-bar"><div class="mob-bottom-bar-inner">
+  <a href="https://order.toasttab.com/online/bubs-at-the-ballpark-715-j-st">ORDER</a>
+  <a href="https://paymegpt.com/p/zQf4DpTq">PARTIES</a>
+  <a href="https://paymegpt.com/p/n6ery3BVY">CATERING</a>
+</div></div>
+
+<div class="hero" data-section="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Live · Loud · Good Times</span>
+    <h1>Events at<br><span>Bub's</span></h1>
+    <p>Weekly events and game nights right next to Petco Park. Check what's on this week.</p>
+    <a href="#events" class="hero-btn">See Events ↓</a>
+    <a href="https://paymegpt.com/p/vnYtdPzuPa" class="hero-btn-outline">Happy Hour →</a>
+  </div>
+</div>
+
+<div class="ticker" data-section="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Weekly Game Night – Every Tuesday</span>
+    <span class="ticker-item">Trivia Night</span>
+    <span class="ticker-item">Family Feud Game Night</span>
+    <span class="ticker-item">When Padres Are Out of Town</span>
+    <span class="ticker-item">11PM – 2AM</span>
+    <span class="ticker-item">Weekly Game Night – Every Tuesday</span>
+    <span class="ticker-item">Trivia Night</span>
+    <span class="ticker-item">Family Feud Game Night</span>
+    <span class="ticker-item">When Padres Are Out of Town</span>
+    <span class="ticker-item">11PM – 2AM</span>
+  </div>
+</div>
+
+<div class="events-section" id="events" data-section="events">
+  <div class="section-header">
+    <span class="eyebrow">What's Happening</span>
+    <h2>Upcoming Events</h2>
+  </div>
+  <div class="events-grid" id="eventsGrid"></div>
+</div>
+
+<div class="mob-bottom-bar"><div class="mob-bottom-bar-inner">
+  <a href="https://order.toasttab.com/online/bubs-at-the-ballpark-715-j-st">ORDER</a>
+  <a href="https://paymegpt.com/p/zQf4DpTq">PARTIES</a>
+  <a href="https://paymegpt.com/p/n6ery3BVY">CATERING</a>
+</div></div>
+
+<div class="hh-teaser" data-section="happy-hour">
+  <div class="hh-teaser-inner">
+    <div class="hh-teaser-left">
+      <h2>Happy Hour<br>Specials</h2>
+      <p>Mon, Tue, Thu & Fri from 3–5PM. $1 off drafts, $5 well drinks, $5 sidecars, and half off all red baskets. Not valid Wednesdays or Padres home games.</p>
+      <a href="https://paymegpt.com/p/vnYtdPzuPa">View All Happy Hour Deals →</a>
+    </div>
+    <div class="hh-mini-grid">
+      <div class="hh-mini"><div class="day">Monday</div><h4>$1 Off Drafts</h4><p>Every draft beer $1 off during Happy Hour</p></div>
+      <div class="hh-mini"><div class="day">Tuesday</div><h4>$5 Well Drinks</h4><p>All well liquor + mixer for just $5</p></div>
+      <div class="hh-mini"><div class="day">Thursday</div><h4>$5 Sidecars</h4><p>Buy a draft, get a sidecar for $5</p></div>
+      <div class="hh-mini"><div class="day">Friday</div><h4>½ Off Red Baskets</h4><p>Rings, fries & tots — all half off</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="mob-bottom-bar"><div class="mob-bottom-bar-inner">
+  <a href="https://order.toasttab.com/online/bubs-at-the-ballpark-715-j-st">ORDER</a>
+  <a href="https://paymegpt.com/p/zQf4DpTq">PARTIES</a>
+  <a href="https://paymegpt.com/p/n6ery3BVY">CATERING</a>
+</div></div>
+
+<div class="promo" data-section="cta">
+  <div>
+    <h2>Host Your Own Event at Bub's</h2>
+    <p>Book a private party or group reservation. We'll set the scene — you bring the guests.</p>
+  </div>
+  <a href="https://paymegpt.com/p/zQf4DpTq">Book a Party →</a>
+</div>
+
+<div class="photo-strip" data-section="gallery">
+  <div><img src="https://static.spotapps.co/spots/0b/a1e5f49b8443f5929d882485a0ddae/medium" alt="Bub's"></div>
+  <div><img src="https://static.spotapps.co/spots/81/283442b0f64477b9b043827a9ee3c9/medium" alt="Bub's"></div>
+  <div><img src="https://static.spotapps.co/spots/fa/3f5acea23c4228983516b9dbab7d8b/medium" alt="Bub's"></div>
+  <div><img src="https://static.spotapps.co/spots/12/544789112c4304919466c767b659fc/medium" alt="Bub's"></div>
+  <div><img src="https://static.spotapps.co/spots/97/d4b41db19743018048b06faed4f6d0/medium" alt="Bub's"></div>
+</div>
+
+<footer data-section="footer">
+  
+  <div class="footer-bar">
+    <div class="footer-left"><h5>Location</h5>715 J St, San Diego, CA 92101<br><h5 style="margin-top:14px;">Hours</h5>Mon–Thu: 11AM–11PM | Fri: 11AM–12AM<br>Sat: 10AM–12AM | Sun: 9:30AM–11PM</div>
+    <div class="footer-logo"><img src="https://static.spotapps.co/website_images/ab_websites/15131_website_v1/footer_img.png" alt="Bub's"></div>
+    <div class="footer-right"><h5>Contact Us</h5><a href="tel:6195460815">(619)-546-0815</a><br><a href="mailto:info@bubssandiego.com">info@bubssandiego.com</a></div>
+  </div>
+  <div class="footer-copy">© 2024 Bub's at the Ballpark. All rights reserved.</div>
+  <div class="mob-bottom-bar"><div class="mob-bottom-bar-inner">
+    <a href="https://order.toasttab.com/online/bubs-at-the-ballpark-715-j-st">ORDER</a>
+    <a href="https://paymegpt.com/p/zQf4DpTq">PARTIES</a>
+    <a href="https://paymegpt.com/p/n6ery3BVY">CATERING</a>
+  </div></div>
+</footer>
+
+<div id="bc-bubble" style="position:fixed;bottom:160px;right:20px;z-index:9999;max-width:260px;background:#1a1008;color:#fff;border-radius:16px 16px 0 16px;padding:16px 36px 16px 16px;font-size:14px;line-height:1.6;box-shadow:0 4px 20px rgba(0,0,0,0.5);font-family:sans-serif;display:none;"><button onclick="document.getElementById('bc-bubble').style.display='none';" style="position:absolute;top:6px;right:8px;background:none;border:none;color:rgba(255,255,255,0.5);font-size:15px;cursor:pointer;">✕</button>👋 Welcome! You can join or access our <strong style="color:#F5B800;">The Fan Zone</strong> VIP Club here, or ask me any questions you have!</div>
+<div id="bc-btn" style="position:fixed;bottom:24px;right:24px;z-index:9999;cursor:pointer;" onclick="bcToggle()"><img src="https://krowdimg.b-cdn.net/buds-chat-icon%20.png" alt="Chat" style="width:125px;height:125px;object-fit:contain;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.4));"></div>
+<div id="bc-modal" style="display:none;position:fixed;bottom:160px;right:24px;width:370px;height:520px;z-index:9998;border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.5);border:2px solid #F5B800;"><button onclick="bcClose()" style="position:absolute;top:8px;right:10px;z-index:9999;background:rgba(0,0,0,0.55);border:none;color:#fff;font-size:15px;cursor:pointer;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;">✕</button><iframe src="https://paymegpt.com/agents/6081365/embed" style="width:100%;height:100%;border:none;"></iframe></div>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html></html>
