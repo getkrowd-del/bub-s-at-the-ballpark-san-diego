@@ -1,6 +1,11 @@
-:root{--gold:#F5B800;--red:#C0272D;--red-dark:#9A1F24;--dark:#1A1008;--dark2:#2C1810;--white:#FFFFFF;--cream:#FEF3C0;}
+/* ===== GLOBAL THEME VARIABLES ===== */
+  /* Defines brand colors, base layout behavior, and typography defaults for the page */
+  :root{--gold:#F5B800;--red:#C0272D;--red-dark:#9A1F24;--dark:#1A1008;--dark2:#2C1810;--white:#FFFFFF;--cream:#FEF3C0;}
   *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
   body{font-family:'Barlow',sans-serif;background:#fff;color:var(--dark);overflow-x:hidden;}
+
+  /* ===== NAVIGATION STYLES ===== */
+  /* Sticky desktop navigation with centered logo and mobile hamburger support */
   nav{background:#1a1008;position:sticky;top:0;z-index:1000;height:100px;display:flex;align-items:center;padding:0 120px 0 36px;}
   .nav-inner{display:flex;align-items:center;width:100%;max-width:1600px;}
   .nav-left{display:flex;align-items:center;justify-content:flex-end;gap:22px;list-style:none;flex:1;padding-right:22px;}
@@ -26,6 +31,8 @@
   .mob-bottom-bar a:nth-child(3){color:rgba(255,255,255,0.85);}
   @media(max-width:900px){nav{padding:0 80px 0 16px;height:80px;}.mob-menu-btn{display:block;}.nav-social{display:none!important;}.nav-left,.nav-right{display:none;}.mob-bottom-bar{display:block;}body{padding-bottom:54px;}}
 
+  /* ===== HERO SECTION STYLES ===== */
+  /* Full-width image hero with dark overlay and responsive safe text spacing */
   .hero{position:relative;height:420px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;}
   .hero-bg{position:absolute;inset:0;background-image:url('https://static.spotapps.co/website_images/ab_websites/15131_website_v1/parties.jpg');background-size:cover;background-position:center;z-index:0;}
   .hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.55);z-index:1;}
@@ -34,12 +41,16 @@
   .hero-content h1 span{color:var(--gold);}
   .hero-content p{font-family:'Barlow Condensed',sans-serif;font-size:18px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.85);}
 
+  /* ===== CAPACITY SECTION STYLES ===== */
+  /* Highlights event capacity facts in a flexible responsive layout */
   .capacity-section{background:#1a1008;color:#fff;padding:48px 60px;text-align:center;}
   .capacity-section h2{font-family:'Oswald',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
   .capacity-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 40px;}
   .capacity-item{font-family:'Barlow',sans-serif;font-size:16px;color:rgba(255,255,255,0.85);display:flex;align-items:center;gap:8px;}
   .capacity-item::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;}
 
+  /* ===== MAIN PARTY CONTENT STYLES ===== */
+  /* Two-column layout for event imagery and party inquiry form */
   .main-content{display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
   .party-images{padding:50px 40px;background:#f5f0e8;display:flex;flex-direction:column;gap:16px;}
   .party-images h3{font-family:'Oswald',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:700;text-transform:uppercase;color:var(--dark);margin-bottom:4px;}
@@ -48,12 +59,13 @@
   .img-grid img{width:100%;height:200px;object-fit:cover;display:block;}
   .img-center{width:100%;height:200px;object-fit:cover;display:block;}
 
+  /* ===== PARTY FORM STYLES ===== */
+  /* Booking form with branded inputs, consent block, and success state */
   .party-form-wrap{padding:50px 40px;background:#fff;position:relative;overflow:hidden;}
   .party-form-wrap::before{content:'';position:absolute;inset:0;background-image:url('https://static.spotapps.co/website_images/ab_websites/15131_website_v1/parties.jpg');background-size:cover;background-position:center;opacity:0.08;z-index:0;}
   .party-form-inner{position:relative;z-index:1;}
   .party-form-inner h3{font-family:'Oswald',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:700;text-transform:uppercase;color:var(--dark);margin-bottom:6px;}
   .party-form-inner p{font-size:14px;line-height:1.6;color:rgba(26,16,8,0.75);margin-bottom:24px;}
-
   .form-group{margin-bottom:18px;}
   .form-group label{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.05em;color:var(--dark);margin-bottom:6px;}
   .form-group label .req{color:var(--red);}
@@ -75,6 +87,8 @@
   .success-msg h4{font-family:'Oswald',sans-serif;font-size:22px;color:#155724;margin-bottom:8px;}
   .success-msg p{font-size:14px;color:#155724;}
 
+  /* ===== FOOTER STYLES ===== */
+  /* Three-column footer with location, logo, and contact information */
   .footer-bar{background:#0e0a06;padding:40px 60px;display:grid;grid-template-columns:1fr auto 1fr;gap:40px;align-items:center;}
   .footer-left h5,.footer-right h5{font-family:'Oswald',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;color:var(--gold);letter-spacing:0.1em;margin-bottom:6px;}
   .footer-left,.footer-right{font-family:'Barlow',sans-serif;font-size:14px;color:rgba(255,255,255,0.65);line-height:2;}
@@ -83,6 +97,8 @@
   .footer-logo img{height:120px;display:block;}
   .footer-copy{background:#0e0a06;border-top:1px solid rgba(255,255,255,0.07);padding:12px 60px;text-align:center;font-size:12px;color:rgba(255,255,255,0.35);font-family:'Barlow',sans-serif;}
 
+  /* ===== RESPONSIVE STYLES ===== */
+  /* Mobile-first adjustments that preserve safe spacing and single-column stacking */
   @media(max-width:900px){
     .main-content{grid-template-columns:1fr;}
     .form-row{grid-template-columns:1fr;}
