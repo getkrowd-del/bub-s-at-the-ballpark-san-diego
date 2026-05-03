@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://getkrowd-del.github.io/bub-s-at-the-ballpark-san-diego/sitemap.xml
