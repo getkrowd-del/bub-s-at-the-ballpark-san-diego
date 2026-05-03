@@ -9,7 +9,7 @@ move(idx,false);
 function start(){stop();timer=setInterval(function(){move(idx+1,true);},2800);}function stop(){if(timer){clearInterval(timer);timer=null;}}start();
 document.getElementById('carouselNext').addEventListener('click',function(){move(idx+1,true);if(playing){stop();start();}});
 document.getElementById('carouselPrev').addEventListener('click',function(){move(idx-1,true);if(playing){stop();start();}});
-document.getElementById('carouselPauseBtn').addEventListener('click',function(){if(playing){stop();playing=false;this.innerHTML='&#9654; Play';}else{start();playing=true;this.innerHTML='&#9646;&#9646; Pause';}});
+document.getElementById('carouselPauseBtn').addEventListener('click',function(){if(playing){stop();playing=false;this.innerHTML='▶ Play';}else{start();playing=true;this.innerHTML='▮▮ Pause';}});
 })();
 (function(){var FALLBACK=[{reviewer:'Trey Crockett',rating:5,text:'Great sports bar for wings and a healthy selection of taps.',photo:'https://lh3.googleusercontent.com/a-/ALV-UjWPH43Bow_OvZHyB-Y7Pyyd9i_k_rkzyNOLna6tobd66NJ1o45snQ=s120-c-rp-mo-ba3-br100'},{reviewer:'Sharonda Basemore',rating:5,text:'Burgers and tots were amazing.',photo:'https://lh3.googleusercontent.com/a-/ALV-UjVB4wFohOU5xifrwE5UU66regsncFufzyRUPUelQZaHqVVjzK07xg=s120-c-rp-mo-ba4-br100'},{reviewer:'Lykeitha Banks',rating:5,text:'Best wings hands down.',photo:'https://lh3.googleusercontent.com/a/ACg8ocLvvuQX11pqoLGQAEWKk3JKzkGLtLjTmJsIYon0DmLATnioKQ=s120-c-rp-mo-ba2-br100'},{reviewer:'Alex & Erika on YouTube',rating:5,text:'My favorite place before a baseball game!',photo:'https://lh3.googleusercontent.com/a-/ALV-UjWQ2f1anNxfVPxq40LjYTFRcD_EqfqpAxBPXGMQxkcMlHGomZchIg=s120-c-rp-mo-ba5-br100'},{reviewer:'Marcel Marshall',rating:5,text:'Great service and food.',photo:'https://lh3.googleusercontent.com/a/ACg8ocIeUHFIy_UiZQZafSprU06njHSjaCFtsjZCgH_AtgMNiusyQg=s120-c-rp-mo-ba3-br100'}];
 var reviews=[],cur=0,playing=true,timer=null;
@@ -21,7 +21,7 @@ function startAuto(){stopAuto();timer=setInterval(function(){show(cur+1);},5000)
 function init(data){reviews=data;buildDots();show(0);startAuto();}
 document.getElementById('reviewPrev').addEventListener('click',function(){show(cur-1);reset();});
 document.getElementById('reviewNext').addEventListener('click',function(){show(cur+1);reset();});
-ppBtn.addEventListener('click',function(){if(playing){stopAuto();playing=false;ppBtn.innerHTML='&#9654;';}else{startAuto();playing=true;ppBtn.innerHTML='&#9646;&#9646;';}});
+ppBtn.addEventListener('click',function(){if(playing){stopAuto();playing=false;ppBtn.innerHTML='▶';}else{startAuto();playing=true;ppBtn.innerHTML='▮▮';}});
 fetch('https://corsproxy.io/?'+encodeURIComponent('https://api.getkrowd.com/v3/reviews/index.cfm?companyId=1062&apiKey=krwd_5ec5faa630ad660e94f8aef336cfd87042613b3f0a91bd8de898a3cb1be')).then(function(r){return r.json();}).then(function(data){if(data&&data.reviews&&data.reviews.length){var f=data.reviews.filter(function(r){return r.text&&r.text.trim().length>0;});if(f.length>0){init(f.map(function(r){return{reviewer:r.reviewer,rating:r.rating,text:r.text,photo:r.user_photo};}));return;}}init(FALLBACK);}).catch(function(){init(FALLBACK);});
 })();
 (function(){var slides=document.querySelectorAll('.hs-slide');var dotsC=document.getElementById('hsDots');var pauseBtn=document.getElementById('hs-pause');var cur=0,playing=true,timer=null;
@@ -30,7 +30,7 @@ function goTo(n){slides[cur].classList.remove('hs-active');dotsC.children[cur].c
 function startAuto(){stopAuto();timer=setInterval(function(){goTo(cur+1);},4000);}function stopAuto(){if(timer){clearInterval(timer);timer=null;}}function reset(){if(playing){stopAuto();startAuto();}}
 document.getElementById('hsNextBtn').addEventListener('click',function(){goTo(cur+1);reset();});
 document.getElementById('hsPrevBtn').addEventListener('click',function(){goTo(cur-1);reset();});
-pauseBtn.addEventListener('click',function(){if(playing){stopAuto();playing=false;pauseBtn.innerHTML='&#9654;';}else{startAuto();playing=true;pauseBtn.innerHTML='&#9646;&#9646;';}});
+pauseBtn.addEventListener('click',function(){if(playing){stopAuto();playing=false;pauseBtn.innerHTML='▶';}else{startAuto();playing=true;pauseBtn.innerHTML='▮▮';}});
 startAuto();
 })();
 
